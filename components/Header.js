@@ -15,14 +15,14 @@ export default Header;
 const classes = StyleSheet.create({
   header: {
     width: "100%",
-    height: 80,
+    height: 90,
     backgroundColor: COLORS.primary,
     justifyContent: "center",
   },
   title: {
     color: "white",
     fontSize: 21,
-    marginTop: 10,
+    marginTop: 20,
     padding: 20,
   },
 });
