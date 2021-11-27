@@ -12,7 +12,7 @@ import COLORS from "../constants/colors";
 import Card from "../components/Card";
 import Input from "../components/Input";
 
-const Start = () => {
+const Start = ({ setUserNumber }) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [confirm, setConfirm] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
@@ -22,7 +22,7 @@ const Start = () => {
   };
 
   const handleConfirm = () => {
-    if (isNaN(selectedNumber) || selectedNumber <= 0 || selectedNumber > 99) {
+    if (isNaN(+enteredValue) || +enteredValue <= 0 || +enteredValue > 99) {
       Alert.alert(
         "Invalid number",
         "Number has to be a number between 1 and 99",
@@ -41,10 +41,22 @@ const Start = () => {
     setSelectedNumber();
   };
 
+  const handleStart = () => {
+    setUserNumber(selectedNumber);
+  };
+
   let confirmedOutput;
 
   if (confirm) {
-    confirmedOutput = <Text>Chosen number {selectedNumber}</Text>;
+    confirmedOutput = (
+      <Card style={classes.confirmedOutput}>
+        <Text>Chosen number</Text>
+        <Text style={classes.number}>{selectedNumber}</Text>
+        <View style={classes.startButton}>
+          <Button title="Start game" onPress={handleStart} />
+        </View>
+      </Card>
+    );
   }
 
   return (
@@ -111,6 +123,17 @@ const classes = StyleSheet.create({
   input: {
     width: "100%",
     textAlign: "center",
+  },
+  confirmedOutput: {
+    marginTop: 50,
+    alignItems: "center",
+  },
+  number: {
+    fontSize: 20,
+    color: "blue",
+  },
+  startButton: {
+    marginTop: 10,
   },
 });
 
