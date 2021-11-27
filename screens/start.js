@@ -1,20 +1,21 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import COLORS from "../constants/colors";
 import Card from "../components/Card";
+import Input from "../components/Input";
 
-const Start = (props) => {
+const Start = () => {
   return (
-    <View style={styles.screen}>
-      <Text style={styles.title}>Start a New Game!</Text>
-      <Card style={styles.inputContainer}>
+    <View style={classes.screen}>
+      <Text style={classes.title}>Start a New Game!</Text>
+      <Card style={classes.inputContainer}>
         <Text>Select a Number</Text>
-        <TextInput />
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
+        <Input styles={classes.input} />
+        <View style={classes.buttonContainer}>
+          <View style={classes.button}>
             <Button title="Reset" color={COLORS.secondary} onPress={() => {}} />
           </View>
-          <View style={styles.button}>
+          <View style={classes.button}>
             <Button title="Confirm" color={COLORS.primary} onPress={() => {}} />
           </View>
         </View>
@@ -23,7 +24,7 @@ const Start = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
+const classes = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 10,
@@ -46,6 +47,10 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 100,
+  },
+  input: {
+    width: "100%",
+    textAlign: "center",
   },
 });
 
