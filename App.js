@@ -12,6 +12,11 @@ export default function App() {
   const gameOver = (numberOfRounds) => {
     setRounds(numberOfRounds);
   };
+
+  const startOver = () => {
+    setRounds(0);
+    setUserNumber(null);
+  };
   return (
     <View style={classes.screen}>
       <Header title="Natiive" />
@@ -19,7 +24,11 @@ export default function App() {
       {userNumber && rounds <= 0 ? (
         <Game userChoice={userNumber} onGameOver={gameOver} />
       ) : rounds > 0 ? (
-        <GameOver />
+        <GameOver
+          rounds={rounds}
+          userNumber={userNumber}
+          startOver={startOver}
+        />
       ) : (
         <Start setUserNumber={setUserNumber} />
       )}
